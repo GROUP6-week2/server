@@ -26,7 +26,7 @@ imageSchema.pre('save', function (next) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Ocp-Apim-Subscription-Key': subscriptionKey
+            'Ocp-Apim-Subscription-Key': process.env.AZURE_KEY
         },
         params: {
             'returnFaceAttributes': 'emotion'
@@ -37,7 +37,11 @@ imageSchema.pre('save', function (next) {
     }).then(({ data, status }) => {
         let emotion = data.map(face => face.faceAttributes.emotion)
         self.mood = emotion
+        next()
     }).catch(err => {
+        next({
+            message: err.message
+        })
         console.error(err.message)
     })
 

@@ -11,8 +11,7 @@ const imageSchema = new Schema({
         required: true
     },
     mood: {
-        type: Schema.Types.Mixed,
-        required: true
+        type: Schema.Types.Mixed
     },
     userId: {
         type: ObjectId,

@@ -1,8 +1,11 @@
 var express = require('express');
 var router = express.Router();
 const imageController = require('../controllers/imageController')
+const {authentication} = require('../middlewares/middleware')
+const images = require('../middlewares/images')
 
-
-router.get('/', imageController.get)
+/* GET users listing. */
+router.get('/', authentication, imageController.get)
+router.post('/', authentication, images.multer.single('image'), images.sendUploadToGCS, imageController.uploadImage);
 
 module.exports = router;

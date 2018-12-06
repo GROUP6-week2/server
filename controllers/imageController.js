@@ -19,5 +19,21 @@ module.exports = {
                     message: err.message
                 })
             });
+    },
+    uploadImage(req, res) {
+        let imagePath = req.file.cloudStoragePublicUrl
+        // res.json(req._currentUser)
+        Image.create({
+            imageUrl: imagePath,
+            userId: req._currentUser._id
+        })
+        .then((result) => {
+            res.status(200).json(result)
+        }).catch((err) => {
+            res.status(400).json({
+                message: err.message
+            })
+        });
     }
 }
+    

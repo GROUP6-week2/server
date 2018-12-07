@@ -21,5 +21,20 @@ module.exports = {
                 callback(null, decoded)
             }
           });
+    },
+    getMood(mood) {
+        let {anger, contempt, disgust, fear, happiness, neutral, sadness, surprise} = mood
+        let objMood = {
+            anger, contempt, disgust, fear, happiness, neutral, sadness, surprise
+        }
+        // console.log(objMood)
+        let arrayMood = Object.entries(objMood)
+        arrayMood = arrayMood.sort((a,b) => b[1] > a[1])
+       
+        // let newObj = {}
+        // arrayMood.forEach(element => {
+        //     newObj[element[0]] = element[1]
+        // });
+        return arrayMood[0][0]
     }
 }

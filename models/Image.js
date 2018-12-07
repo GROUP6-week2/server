@@ -11,7 +11,16 @@ const imageSchema = new Schema({
         required: true
     },
     mood: {
-        type: Schema.Types.Mixed
+        type: [{
+            anger: Number,
+            contempt: Number,
+            disgust: Number,
+            fear: Number,
+            happiness: Number,
+            neutral: Number,
+            sadness: Number,
+            surprise: Number
+        }]
     },
     userId: {
         type: ObjectId,

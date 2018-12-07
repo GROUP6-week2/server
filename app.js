@@ -5,7 +5,7 @@ var path = require('path');
 var logger = require('morgan');
 var cors = require('cors')
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/grou-project-2', { useNewUrlParser: true });
+mongoose.connect(process.env.MLAB, { useNewUrlParser: true });
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');

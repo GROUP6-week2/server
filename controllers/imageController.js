@@ -40,7 +40,7 @@ module.exports = {
             }, {
                 upsert: true,
                 new: true
-            })
+            }).populate('currentImage')
         })
         
         .then((result) => {

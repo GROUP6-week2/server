@@ -35,9 +35,14 @@ module.exports = {
             return User.findOneAndUpdate({
                 _id: req._currentUser._id
             }, {
-                currentMood: mood
+                currentMood: mood,
+                currentImage: result._id
+            }, {
+                upsert: true,
+                new: true
             })
         })
+        
         .then((result) => {
             res.status(200).json(result)
         })
@@ -46,6 +51,10 @@ module.exports = {
                 message: err.message
             })
         });
+
+
+
+        
     },
     findMatch(req, res) {
        User.findOne({
@@ -55,7 +64,7 @@ module.exports = {
            return User.find({
                _id: {$ne: result._id},
                currentMood: result.currentMood
-           })
+           }).populate({path:'currentImage'})
         })
         .then((result) => {
             res.status(200).json(result)           

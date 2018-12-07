@@ -3,11 +3,12 @@ const {generateToken, checkPassword} = require('../helpers/helper')
 
 module.exports = {
     register(req, res) {
-        let {name, email, password} = req.body
+        let {name, email, password, phone} = req.body
         User.create({
             name,
             email,
-            password
+            password,
+            phone
         })
         .then((result) => {
             res.status(200).json(result)

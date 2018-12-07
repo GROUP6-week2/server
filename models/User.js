@@ -19,6 +19,14 @@ userSchema = new Schema({
     currentMood: {
         type: String,
         default: ''
+    },
+    phone: {
+        type: String,
+        required: true
+    },
+    currentImage: {
+        type: ObjectId,
+        ref: 'Image'
     }
 })
 

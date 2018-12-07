@@ -15,6 +15,10 @@ userSchema = new Schema({
     password: {
         type: String,
         required: true
+    },
+    currentMood: {
+        type: String,
+        default: ''
     }
 })
 
